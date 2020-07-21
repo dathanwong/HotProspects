@@ -96,11 +96,15 @@ struct ProspectsView: View {
         NavigationView{
             List{
                 ForEach(filteredProspects){ prospect in
-                    VStack(alignment: .leading) {
-                        Text(prospect.name)
-                            .font(.headline)
-                        Text(prospect.emailAddress)
-                            .foregroundColor(.secondary)
+                    HStack{
+                        VStack(alignment: .leading) {
+                            Text(prospect.name)
+                                .font(.headline)
+                            Text(prospect.emailAddress)
+                                .foregroundColor(.secondary)
+                        }
+                        Spacer()
+                        Image(systemName: prospect.isContacted ? "hand.thumbsup" : "hand.thumbsdown")
                     }
                     .contextMenu{
                         Button(prospect.isContacted ? "Mark Uncontacted" : "Mark Contacted"){
